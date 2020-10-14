@@ -1,9 +1,15 @@
 //Psuedo 
 
+// TEST JAVA
+// alert("this is working");
+
+
 // Needs the page to already load html
 
-// BODY VARIABLE
-// var body = document.body;
+
+// DIV
+// This mainDiv stores H1 text content
+//  $("#main-div").html("<h1>Welcome to your BootCamp JS Quiz!</h1>");
 
 //CREATE ELEMENTS
 // var h1TimerText = document.createElement.("h1")
@@ -13,6 +19,8 @@
 // SET TEXT CONTENT
 // Heading text - "Welcome to your Bootcamp Code Quiz"
     // h1TimerText.textContent = "Welcome to your BootCamp Code Quiz"
+// $ ("#h1TimerText").append(div)
+
 
 // Paragraph text -  "This quiz is going to test your fundamental understanding of JavaScript. 
 // You have 90 seconds to answer all of the questions correctly....""
