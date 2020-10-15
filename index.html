@@ -4,20 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <title>JS_Quiz</title>
-    <!-- Added link to the jQuery library -->
+<!-- Link to CSS -->
+<link rel="stylesheet" href="./style.css">
+    <!-- Added jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
+    <div id="timer-div"></div>
+<!-- Stores all written content -->
+    <div id="main-div">
+    </div>
+    <button id="startQuiz">Click to Start!</button>
+<div id= "question">
+<button class= "questions" id= "answer1"></button>
+<button class= "questions" id= "answer2"></button>
+<button class= "questions" id= "answer3"></button>
+<button class= "questions" id= "answer4"></button>
+</div>
 
-    <div id="main-div"></div>
+<!-- Div to store the "startQuiz" button and trigger the timer -->
 
-    <script type="text/javascript">
-
-        $("#main-div").html("<h1>Welcome to the BootCamp JS Quiz!</h1>");
-
-    </script>
-
+    <script src="./script.js" type="text/javascript"></script>
 </body>
 
 </html>

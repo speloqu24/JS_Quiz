@@ -3,67 +3,89 @@
 // TEST JAVA
 // alert("this is working");
 
-
-// Needs the page to already load html
-
-
-// DIV
-// This mainDiv stores H1 text content
-//  $("#main-div").html("<h1>Welcome to your BootCamp JS Quiz!</h1>");
-
-//CREATE ELEMENTS
-// var h1TimerText = document.createElement.("h1")
-// var quizRulesText = document.createElement.("p")
-
-
-// SET TEXT CONTENT
-// Heading text - "Welcome to your Bootcamp Code Quiz"
-    // h1TimerText.textContent = "Welcome to your BootCamp Code Quiz"
-// $ ("#h1TimerText").append(div)
-
-
-// Paragraph text -  "This quiz is going to test your fundamental understanding of JavaScript. 
-// You have 90 seconds to answer all of the questions correctly....""
-    // quizRulesText.textContent = ""This quiz is going to test your fundamental understanding of JavaScript. 
-// You have 90 seconds to answer all of the questions correctly. If a question is 
-// answered in correctly 5 seconds will be removed from the timer, limiting your time
-// even more. When the timer reaches "0" your score will be displayed. Goodluck!""
+var ruleDiv = $("<div>");
+var timerDiv = document.getElementById("timer-div");
+var questionDisplay = document.querySelector("#question")
+var answer1Btn = document.querySelector("#answer1");
+var answer2Btn = document.querySelector("#answer2");
+var answer3Btn = document.querySelector("#answer3");
+var answer4Btn = document.querySelector("#answer4");
 
 
 
-// SET ELEMENT ATTRIBUTES
-// Heading text - "Welcome to your Bootcamp Code Quiz" - Black 
+// JS QUERY - Creating elements, assigning text, appending.
+// "maindiv" stores the H1 text content of "Welcome" to global memory and append to DOM
+$("#main-div").html("<h1>");
+$("#main-div").append("Welcome to the BootCamp JS Quiz!")
+
+ruleDiv.text("This quiz is going to test your fundamental understanding of JavaScript. You have 90 seconds to answer all of the questions correctly. If a question is answered in correctly 5 seconds will be removed from the timer, limiting your time even more. When the timer reaches 0 your score will be displayed. Goodluck!");
+$("#main-div").append(ruleDiv);
 
 
 
+// GLOBAL VARIABLES - quiz questions stored in global memory
+var questions = [ {
+    question: "What does DOM stand for?",
+    options: ["Document Object Model", "Div Object Management", "Document Object Management", "Div Object Model"],
+    correct: "Document Object Model",
+},
+{
+    question: "What does DOM stand for?",
+    options: ["Document Object Model", "Div Object Management", "Document Object Management", "Div Object Model"],
+    correct: "Document Object Model",
+},
+{
+    question: "What does DOM stand for?",
+    options: ["Document Object Model", "Div Object Management", "Document Object Management", "Div Object Model"],
+    correct: "Document Object Model",
+},
+{
+    question: "What does DOM stand for?",
+    options: ["Document Object Model", "Div Object Management", "Document Object Management", "Div Object Model"],
+    correct: "Document Object Model",
+},
+]
 
 
-// "Start Quiz Button" > click button 
-// Because there's a click there will be an "eventListener"
+function questionDisplay() {
+    
+}
+
+
+// START QUIZ WITH TIMER FUNCTION
+function timerDisplay() {
+    var secondsLeft = 120;
+    var timeInterval = setInterval(function() {
+timerDiv.textContent = "Timer: " + secondsLeft
+secondsLeft--;
+if (secondsLeft === 0) {
+        alert ("YOU'VE RAN OUT OF TIME!")
+        clearInterval(timeInterval)
+    }
+    }, 1000);
+}
+
+$("#startQuiz").on("click", function() {
+timerDisplay()
+})
+
 
 // Create score variables
 // var score = 0; (start at 0)
 // for loop to increase score by 1 (++) if correct 
 
-// When "Start Quiz Button" is clicked the Heading text and Paragraph text are replaced
-// with the first question. 
-// 90 Timer starts 
-
-// var secondsleft = 90;
-// secondsLeft --; (decrease by 1)
-// second statement needs to be , 1000); - this will run the clock every second
 
 // first question 
 
 // If statement for question 
-// user clicks on their selection = var userGuess
 // function setTimer (){
-    // var timerInterval = setInterval (function () {
-    // secondsLeft --; 
-    //        .textContent = "Timer: " + secondsLeft }
-// if (userGuess == true) {
-    // trigger function for next question 
-
+//     var timerInterval = setInterval (function () {
+//         secondsLeft --; 
+//         .textContent = "Timer: " + secondsLeft }
+//         // if (userGuess == true) {
+//             // trigger function for next question 
+            
+//             // user clicks on their selection = var userGuess
 
 
 
@@ -76,4 +98,5 @@
 
 // function runTime () {}
 // function askQuestions () {}
+
 
