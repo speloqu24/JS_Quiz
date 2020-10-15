@@ -11,19 +11,27 @@
 </head>
 
 <body>
+    <!-- Timer Div -->
     <div id="timer-div"></div>
+
 <!-- Stores all written content -->
     <div id="main-div">
+        <h1>Welcome to the BootCamp JS Quiz!</h1>
+        <p>This quiz is going to test your fundamental understanding of JavaScript. You have 120 seconds to answer all of the
+        questions correctly. If a question is answered in correctly 5 seconds will be removed from the timer, limiting your time
+        even more. When the timer reaches 0 your score will be displayed. Goodluck!</p>
+        <button id="startQuiz">Click to Start!</button>
     </div>
-    <button id="startQuiz">Click to Start!</button>
-<div id= "question">
-<button class= "questions" id= "answer1"></button>
-<button class= "questions" id= "answer2"></button>
-<button class= "questions" id= "answer3"></button>
-<button class= "questions" id= "answer4"></button>
+
+    <!-- Question Display div -->
+<div class= "hide-show" id="questionDisplay">
+    <h1 id= "theAsk"></h1>
+    <button class= "questions" id= "answer1"></button>
+    <button class= "questions" id= "answer2"></button>
+    <button class= "questions" id= "answer3"></button>
+    <button class= "questions" id= "answer4"></button>
 </div>
 
-<!-- Div to store the "startQuiz" button and trigger the timer -->
 
     <script src="./script.js" type="text/javascript"></script>
 </body>

@@ -1,32 +1,38 @@
-//Psuedo 
-
 // TEST JAVA
 // alert("this is working");
 
-var ruleDiv = $("<div>");
+var mainDiv = document.getElementById("main-div");
+var startQuiz = document.getElementById("startQuiz");
+
+// Timer variable
 var timerDiv = document.getElementById("timer-div");
-var questionDisplay = document.querySelector("#question")
+
+// The question-answer variables
+var questionDisplay = document.querySelector("#questionDisplay");
+var theAsk = document.querySelector("#theAsk");
+
+// question index
+var next = 0;
+
+// answer btn selection
+
+var button = document.querySelectorAll("questions");
+
 var answer1Btn = document.querySelector("#answer1");
 var answer2Btn = document.querySelector("#answer2");
 var answer3Btn = document.querySelector("#answer3");
 var answer4Btn = document.querySelector("#answer4");
 
 
-
-// JS QUERY - Creating elements, assigning text, appending.
-// "maindiv" stores the H1 text content of "Welcome" to global memory and append to DOM
-$("#main-div").html("<h1>");
-$("#main-div").append("Welcome to the BootCamp JS Quiz!")
-
-ruleDiv.text("This quiz is going to test your fundamental understanding of JavaScript. You have 90 seconds to answer all of the questions correctly. If a question is answered in correctly 5 seconds will be removed from the timer, limiting your time even more. When the timer reaches 0 your score will be displayed. Goodluck!");
-$("#main-div").append(ruleDiv);
-
-
-
-// GLOBAL VARIABLES - quiz questions stored in global memory
-var questions = [ {
+// GLOBAL VARIABLES - quiz questions stored in global memory 8 questions
+var questionsArray = [ {
     question: "What does DOM stand for?",
     options: ["Document Object Model", "Div Object Management", "Document Object Management", "Div Object Model"],
+    correct: "Document Object Model",
+},
+{
+    question: "What does var stand for?",
+    options: ["Variable", "Div Object Management", "Document Object Management", "Div Object Model"],
     correct: "Document Object Model",
 },
 {
@@ -38,36 +44,77 @@ var questions = [ {
     question: "What does DOM stand for?",
     options: ["Document Object Model", "Div Object Management", "Document Object Management", "Div Object Model"],
     correct: "Document Object Model",
-},
-{
+},{
+    question: "What does DOM stand for?",
+    options: ["Document Object Model", "Div Object Management", "Document Object Management", "Div Object Model"],
+    correct: "Document Object Model",
+},{
+    question: "What does DOM stand for?",
+    options: ["Document Object Model", "Div Object Management", "Document Object Management", "Div Object Model"],
+    correct: "Document Object Model",
+},{
+    question: "What does DOM stand for?",
+    options: ["Document Object Model", "Div Object Management", "Document Object Management", "Div Object Model"],
+    correct: "Document Object Model",
+},{
     question: "What does DOM stand for?",
     options: ["Document Object Model", "Div Object Management", "Document Object Management", "Div Object Model"],
     correct: "Document Object Model",
 },
 ]
 
-
-function questionDisplay() {
-    
-}
-
-
 // START QUIZ WITH TIMER FUNCTION
 function timerDisplay() {
     var secondsLeft = 120;
     var timeInterval = setInterval(function() {
-timerDiv.textContent = "Timer: " + secondsLeft
-secondsLeft--;
-if (secondsLeft === 0) {
-        alert ("YOU'VE RAN OUT OF TIME!")
-        clearInterval(timeInterval)
-    }
+        timerDiv.textContent = "Timer: " + secondsLeft
+        secondsLeft--;
+        if (secondsLeft === 0) {
+            alert ("YOU'VE RAN OUT OF TIME!")
+            clearInterval(timeInterval)
+        }
     }, 1000);
 }
 
-$("#startQuiz").on("click", function() {
-timerDisplay()
+startQuiz.addEventListener("click", function (){
+    document.getElementById("main-div").style.visibility='hidden';
+    document.getElementById("questionDisplay").style.visibility='visible';
+    timerDisplay()
+    triggerQuestion();
+
+    // mainDiv.classList.add("hide");
+    
+    // questionDisplay.classList.add("hide-show");
+    // triggerQuestion()
 })
+
+
+function triggerQuestion() {
+    theAsk.textContent = questionsArray[next].question;
+    answer1Btn.textContent = questionsArray[next].options[0];
+    answer2Btn.textContent = questionsArray[next].options[1];
+    answer3Btn.textContent = questionsArray[next].options[2];
+    answer4Btn.textContent = questionsArray[next].options[3];
+}
+
+button.forEach(function (answers){
+    answers.addEventListener("click", function (eventclk){
+        var btneL = eventclk.target;
+    }) } )
+    
+    //         if (btneL.textContent !== questionsArray[next].correct){
+    //             secondsLeft --;
+    //         } if (next < questionsArray.length -1){
+    //             next++
+    //             triggerQuestion()
+    //         } else {
+    //             clearInterval(timeInterval)
+    //         }
+    //     }
+// $("#startQuiz").on("click", function() {
+
+// timerDisplay()
+// })
 
 
 // Create score variables
