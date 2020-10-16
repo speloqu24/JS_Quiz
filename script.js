@@ -30,7 +30,7 @@ var answer4Btn = document.querySelector("#answer4");
 // GLOBAL VARIABLES - quiz questions stored in global memory 8 questions
 var questionsArray = [ {
     question: "What does DOM stand for?",
-    options: ["Document Object Model", "Div Object Management", "Document Object Management", "Div Object Model"],
+    options: ["Document Object Model", "this answer is wrong", "DoCT", "Dive into modes"],
     correct: "Document Object Model",
 },
 {
@@ -116,20 +116,20 @@ function triggerQuestion() {
 } 
 
 function questionIterate (event) {
-    next++
-    triggerQuestion(); 
     document.getElementById("score-div").style.visibility='visible';
     
     event.preventDefault() // prevents any default button behavior
-
-    var userAnswer = event.target.textContent
-    checkAnswer(userAnswer);
+    
+    var answer = event.target.textContent
+    checkAnswer(answer);
+    console.log(answer);
+    next++
+    triggerQuestion(); 
 }
 
-function checkAnswer (userAnswer) {
-    if (userAnswer = questionsArray[next].correct) {
-        console.log(userAnswer);
-        alert ("You got it right!")
+function checkAnswer (answer) {
+    if (answer === questionsArray[next].correct) {
+        alert ("Correct!")
     } else { alert ( "wrong"
     )} }
 
