@@ -31,33 +31,33 @@ var questionsArray = [ {
     correct: "Document Object Model",
 },
 {
-    question: "What does var stand for?",
-    options: ["Variable", "Div Object Management", "Document Object Management", "Div Object Model"],
-    correct: "Document Object Model",
+    question: "What do we use to store global variables?",
+    options: ["gl", "var", "gv", "vari"],
+    correct: "var",
 },
 {
-    question: "What does DOM stand for?",
-    options: ["Document Object Model", "Div Object Management", "Document Object Management", "Div Object Model"],
-    correct: "Document Object Model",
+    question: "When does a function run in JS?",
+    options: ["Not until user tells it to", "As soon as you write it", "When it's called ()", "At the very end"],
+    correct: "When it's called",
 },
 {
-    question: "What does DOM stand for?",
+    question: "How is JS added to HTML?",
+    options: ["<scripthtml>", "<js>", "<javascript>", "<script>"],
+    correct: "<script>",
+},{
+    question: "Q5",
     options: ["Document Object Model", "Div Object Management", "Document Object Management", "Div Object Model"],
     correct: "Document Object Model",
 },{
-    question: "What does DOM stand for?",
+    question: "Q6?",
     options: ["Document Object Model", "Div Object Management", "Document Object Management", "Div Object Model"],
     correct: "Document Object Model",
 },{
-    question: "What does DOM stand for?",
+    question: "Q7",
     options: ["Document Object Model", "Div Object Management", "Document Object Management", "Div Object Model"],
     correct: "Document Object Model",
 },{
-    question: "What does DOM stand for?",
-    options: ["Document Object Model", "Div Object Management", "Document Object Management", "Div Object Model"],
-    correct: "Document Object Model",
-},{
-    question: "What does DOM stand for?",
+    question: "Q8",
     options: ["Document Object Model", "Div Object Management", "Document Object Management", "Div Object Model"],
     correct: "Document Object Model",
 },
@@ -81,40 +81,39 @@ startQuiz.addEventListener("click", function (){
     document.getElementById("questionDisplay").style.visibility='visible';
     timerDisplay()
     triggerQuestion();
-
-    // mainDiv.classList.add("hide");
-    
-    // questionDisplay.classList.add("hide-show");
-    // triggerQuestion()
 })
 
 
 function triggerQuestion() {
     theAsk.textContent = questionsArray[next].question;
+
     answer1Btn.textContent = questionsArray[next].options[0];
+    answer1Btn.addEventListener("click", questionIterate);
+
     answer2Btn.textContent = questionsArray[next].options[1];
+    answer2Btn.addEventListener("click", questionIterate);
+
     answer3Btn.textContent = questionsArray[next].options[2];
+    answer3Btn.addEventListener("click", questionIterate);
+
     answer4Btn.textContent = questionsArray[next].options[3];
+    answer4Btn.addEventListener("click", questionIterate);
+    // answer4Btn.addEventListener("click", function(){
+    //     next++
+    //     theAsk.textContent=questionsArray[next].question;
+    // });
+    // answer4Btn.addEventListener("click", questionIterate);
+} 
+
+function questionIterate () {
+    next++
+    theAsk.textContent = questionsArray[next].question;
+    // answer1Btn.textContent = questionsArray[next].question[0];
+    // answer2Btn.textContent = questionsArray[next].question[1];
+    // answer3Btn.textContent = questionsArray[next].question[2];
+    // answer4Btn.textContent = questionsArray[next].options[3];
+   
 }
-
-button.forEach(function (answers){
-    answers.addEventListener("click", function (eventclk){
-        var btneL = eventclk.target;
-    }) } )
-    
-    //         if (btneL.textContent !== questionsArray[next].correct){
-    //             secondsLeft --;
-    //         } if (next < questionsArray.length -1){
-    //             next++
-    //             triggerQuestion()
-    //         } else {
-    //             clearInterval(timeInterval)
-    //         }
-    //     }
-// $("#startQuiz").on("click", function() {
-
-// timerDisplay()
-// })
 
 
 // Create score variables
