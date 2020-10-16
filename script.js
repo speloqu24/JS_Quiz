@@ -69,6 +69,10 @@ var questionsArray = [ {
 // HIDES ENTIRE QUESTIONDISPLAY DIV
 document.getElementById("questionDisplay").style.visibility='hidden';
 
+// HIDES SCORE BOARD TILL FIRST QUESTION
+scoreCount.textContent = "Score: " + next
+document.getElementById("score-div").style.visibility='hidden';
+
 
 // START QUIZ WITH TIMER FUNCTION
 function timerDisplay() {
@@ -111,11 +115,28 @@ function triggerQuestion() {
     answer4Btn.addEventListener("click", questionIterate);
 } 
 
-function questionIterate () {
+function questionIterate (event) {
     next++
-    triggerQuestion();   
+    triggerQuestion(); 
+    document.getElementById("score-div").style.visibility='visible';
+    
+    event.preventDefault() // prevents any default button behavior
+
+    var userAnswer = event.target.textContent
+    checkAnswer(userAnswer);
 }
 
+function checkAnswer (userAnswer) {
+    if (userAnswer = questionsArray[next].correct) {
+        console.log(userAnswer);
+        alert ("You got it right!")
+    } else { alert ( "wrong"
+    )} }
+
+    // get current questions correct answer and compare it to the answer that's passed in. If they are the same
+//     // increase the score by one
+//     // if they're not the same decrease the time by -10
+// }
 
 // function userSelection (){
 //     score = score + 1
