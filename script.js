@@ -14,8 +14,11 @@ var theAsk = document.querySelector("#theAsk");
 // question index
 var next = 0;
 
-// answer btn selection
+// score
+var score = 0;
+var scoreCount = document.getElementById("score-div");
 
+// answer btn selection
 var button = document.querySelectorAll("questions");
 
 var answer1Btn = document.querySelector("#answer1");
@@ -45,7 +48,7 @@ var questionsArray = [ {
     options: ["<scripthtml>", "<js>", "<javascript>", "<script>"],
     correct: "<script>",
 },{
-    question: "Q5",
+    question: "Q5?",
     options: ["Document Object Model", "Div Object Management", "Document Object Management", "Div Object Model"],
     correct: "Document Object Model",
 },{
@@ -53,15 +56,19 @@ var questionsArray = [ {
     options: ["Document Object Model", "Div Object Management", "Document Object Management", "Div Object Model"],
     correct: "Document Object Model",
 },{
-    question: "Q7",
+    question: "Q7?",
     options: ["Document Object Model", "Div Object Management", "Document Object Management", "Div Object Model"],
     correct: "Document Object Model",
 },{
-    question: "Q8",
+    question: "Q8?",
     options: ["Document Object Model", "Div Object Management", "Document Object Management", "Div Object Model"],
     correct: "Document Object Model",
 },
 ]
+
+// HIDES ENTIRE QUESTIONDISPLAY DIV
+document.getElementById("questionDisplay").style.visibility='hidden';
+
 
 // START QUIZ WITH TIMER FUNCTION
 function timerDisplay() {
@@ -73,8 +80,12 @@ function timerDisplay() {
             alert ("YOU'VE RAN OUT OF TIME!")
             clearInterval(timeInterval)
         }
-    }, 1000);
+    }, 1100);
 }
+
+// WHAT HAPPENS WITH TIME RUNS OUT? 
+// Instead of an alert, clear div timerDiv.textContent="";
+
 
 startQuiz.addEventListener("click", function (){
     document.getElementById("main-div").style.visibility='hidden';
@@ -98,40 +109,30 @@ function triggerQuestion() {
 
     answer4Btn.textContent = questionsArray[next].options[3];
     answer4Btn.addEventListener("click", questionIterate);
-    // answer4Btn.addEventListener("click", function(){
-    //     next++
-    //     theAsk.textContent=questionsArray[next].question;
-    // });
-    // answer4Btn.addEventListener("click", questionIterate);
 } 
 
 function questionIterate () {
     next++
-    theAsk.textContent = questionsArray[next].question;
-    // answer1Btn.textContent = questionsArray[next].question[0];
-    // answer2Btn.textContent = questionsArray[next].question[1];
-    // answer3Btn.textContent = questionsArray[next].question[2];
-    // answer4Btn.textContent = questionsArray[next].options[3];
-   
+    triggerQuestion();   
 }
+
+
+// function userSelection (){
+//     score = score + 1
+// }
+
+// function userSelection (){
+//     scoreCount.textContent = "Score: " + score
+//     var answers = questionsArray[""].correct
+//     if (answers == questionsArray[""].options[correct]) {
+//         score++
+//     }
+// }
 
 
 // Create score variables
 // var score = 0; (start at 0)
 // for loop to increase score by 1 (++) if correct 
-
-
-// first question 
-
-// If statement for question 
-// function setTimer (){
-//     var timerInterval = setInterval (function () {
-//         secondsLeft --; 
-//         .textContent = "Timer: " + secondsLeft }
-//         // if (userGuess == true) {
-//             // trigger function for next question 
-            
-//             // user clicks on their selection = var userGuess
 
 
 

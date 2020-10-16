@@ -1,22 +1,48 @@
 body {
   text-align: center;
   margin: auto;
+  background-color: whitesmoke;
 }
 
-#main-div p {
+h1 {
+  color: coral;
+}
+
+p {
   color: black;
+  text-align: center;
+  margin-left: 100px;
+  margin-right: 100px;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 #timer-div {
   color: red;
   text-align: right;
   margin-right: 20px;
+  font-size: 20px;
 }
 
 #startQuiz {
   background-color: coral;
-  color: azure;
-  padding: 20px;
-  border-radius: 15%;
+  color: whitesmoke;
+  padding: 10px;
+  border-radius: 20%;
   font-size: 20px;
+}
+
+#startQuiz:hover {
+  background-color: darkcyan;
+}
+
+.questions {
+  background-color: coral;
+  color: white;
+  margin-right: 10px;
+  padding: 10px;
+}
+
+.questions:hover {
+  background-color: darkcyan;
 }
