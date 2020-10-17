@@ -9,7 +9,7 @@ var timerDiv = document.getElementById("timer-div");
 var secondsLeft = 120;
 
 // The question-answer variables
-var questionDisplay = document.querySelector("#questionDisplay");
+// var questionDisplay = document.querySelector("#questionDisplay");
 var theAsk = document.querySelector("#theAsk");
 
 // question index
@@ -72,7 +72,10 @@ document.getElementById("questionDisplay").style.visibility='hidden';
 
 // HIDES SCORE BOARD TILL FIRST QUESTION
 scoreCount.textContent = "Score: " + score++
+
+// Hide and Seek!
 document.getElementById("score-div").style.visibility='hidden';
+document.getElementById("endScreen").style.visibility='hidden';
 
 
 // START QUIZ WITH TIMER FUNCTION
@@ -80,11 +83,11 @@ function timerDisplay() {
     var timeInterval = setInterval(function() {
         timerDiv.textContent = "Timer: " + secondsLeft
         secondsLeft--;
-        if (secondsLeft === 0) {
-            alert ("YOU'VE RAN OUT OF TIME!")
+        if (secondsLeft === 0 || next === questionsArray.length) {
             clearInterval(timeInterval)
+            endScreen()
         }
-    }, 1000);
+    }, 500);
 }
 
 // WHAT HAPPENS WITH TIME RUNS OUT? 
@@ -94,7 +97,6 @@ function timerDisplay() {
 startQuiz.addEventListener("click", function (){
     document.getElementById("main-div").style.visibility='hidden';
     document.getElementById("questionDisplay").style.visibility='visible';
-    document.getElementById("score-div").style.visibility='visible';
     timerDisplay()
     triggerQuestion();
 })
@@ -102,7 +104,6 @@ startQuiz.addEventListener("click", function (){
 
 function triggerQuestion() {
     theAsk.textContent = questionsArray[next].question;
-
 
     answer1Btn.textContent = questionsArray[next].options[0];
     answer1Btn.addEventListener("click", questionIterate);
@@ -117,7 +118,7 @@ function triggerQuestion() {
 function questionIterate (event) {
     // document.getElementById("score-div").style.visibility='visible';
     event.preventDefault() // prevents any default button behavior
-    
+
     var answer = event.target.textContent
     checkAnswer(answer);
     console.log(answer);
@@ -129,9 +130,18 @@ function checkAnswer (answer) {
     if (answer === questionsArray[next].correct) {
         scoreCount.textContent = "Score: " + score++
     } else { secondsLeft -= 10; 
-    timerDiv.textContent = "Timer: " + secondsLeft
     } }
 
+
+    function endScreen () {
+    document.getElementById("questionDisplay").style.visibility='hidden';
+    document.getElementById("endScreen").style.visibility='visible';
+    document.getElementById("score-div").style.visibility='visible';
+
+    var endImage = document.createElement("img")
+    endImage.setAttribute("src", )
+
+    }
     // get current questions correct answer and compare it to the answer that's passed in. If they are the same
 //     // increase the score by one
 //     // if they're not the same decrease the time by -10
