@@ -40,24 +40,24 @@ var questionsArray = [ {
 },
 {
     question: "When does a function run in JS?",
-    options: ["Not until user tells it to", "As soon as you write it", "When it's called ()", "At the very end"],
-    correct: "When it's called",
+    options: ["{}", "#", "[]", "()"],
+    correct: "()",
 },
 {
     question: "How is JS added to HTML?",
     options: ["<scripthtml>", "<js>", "<javascript>", "<script>"],
     correct: "<script>",
 },{
-    question: "Q5?",
-    options: ["Document Object Model", "Div Object Management", "Document Object Management", "Div Object Model"],
-    correct: "Document Object Model",
+    question: "What are the three pieces to a for loop?",
+    options: ["counter, change, index", "counter, condition, index", "change, counter, iterator ", "counter, condition, iterator"],
+    correct: "counter, condition, iterator",
 },{
-    question: "Q6?",
-    options: ["Document Object Model", "Div Object Management", "Document Object Management", "Div Object Model"],
-    correct: "Document Object Model",
+    question: "An 'alert' pops up, and text input from the user is requested?. What is that called?",
+    options: ["prompt", "confirm", "bolean", "variable"],
+    correct: "prompt",
 },{
-    question: "Q7?",
-    options: ["Document Object Model", "Div Object Management", "Document Object Management", "Div Object Model"],
+    question: "What company developed JavaScript?",
+    options: ["Apple", "Microsoft", "Netscape", "IBM"],
     correct: "Document Object Model",
 },{
     question: "Q8?",

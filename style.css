@@ -46,3 +46,10 @@ p {
 .questions:hover {
   background-color: darkcyan;
 }
+
+.score-div {
+  color: green;
+  text-align: right;
+  margin-right: 20px;
+  font-size: 20px;
+}
