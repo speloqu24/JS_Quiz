@@ -1,34 +1,23 @@
 // TEST JAVA
 // alert("this is working");
 
+// VARIABLE DECLARATION : Storing variables in global memory
 var mainDiv = document.getElementById("main-div");
 var startQuiz = document.getElementById("startQuiz");
-
-// Timer variable
+var endScreenDiv = document.getElementById("endScreen")
 var timerDiv = document.getElementById("timer-div");
-var secondsLeft = 120;
-
-// The question-answer variables
-// var questionDisplay = document.querySelector("#questionDisplay");
 var theAsk = document.querySelector("#theAsk");
-
-// question index
-var next = 0;
-
-// score
-var score = 0;
 var scoreCount = document.getElementById("score-div");
-
-// answer btn selection
 var button = document.querySelectorAll("questions");
-
 var answer1Btn = document.querySelector("#answer1");
 var answer2Btn = document.querySelector("#answer2");
 var answer3Btn = document.querySelector("#answer3");
 var answer4Btn = document.querySelector("#answer4");
 
+var secondsLeft = 90;
+var next = 0;
+var score = 0;
 
-// GLOBAL VARIABLES - quiz questions stored in global memory 8 questions
 var questionsArray = [ {
     question: "What does DOM stand for?",
     options: ["Document Object Model", "this answer is wrong", "DoCT", "Dive into modes"],
@@ -59,24 +48,19 @@ var questionsArray = [ {
 },{
     question: "What company developed JavaScript?",
     options: ["Apple", "Microsoft", "Netscape", "IBM"],
-    correct: "Document Object Model",
+    correct: "Netscape",
 },{
-    question: "Q8?",
-    options: ["Document Object Model", "Div Object Management", "Document Object Management", "Div Object Model"],
-    correct: "Document Object Model",
+    question: "How can you convert a string to an integer?",
+    options: ["percent", "parseInt", "parse#", "percInt"],
+    correct: "parseInt",
 },
 ]
 
-// HIDES ENTIRE QUESTIONDISPLAY DIV
+// Hide elements
 document.getElementById("questionDisplay").style.visibility='hidden';
-
-// HIDES SCORE BOARD TILL FIRST QUESTION
-scoreCount.textContent = "Score: " + score++
-
-// Hide and Seek!
 document.getElementById("score-div").style.visibility='hidden';
 document.getElementById("endScreen").style.visibility='hidden';
-
+scoreCount.textContent = "Score: " + score++
 
 // START QUIZ WITH TIMER FUNCTION
 function timerDisplay() {
@@ -90,10 +74,6 @@ function timerDisplay() {
     }, 500);
 }
 
-// WHAT HAPPENS WITH TIME RUNS OUT? 
-// Instead of an alert, clear div timerDiv.textContent="";
-
-
 startQuiz.addEventListener("click", function (){
     document.getElementById("main-div").style.visibility='hidden';
     document.getElementById("questionDisplay").style.visibility='visible';
@@ -101,10 +81,9 @@ startQuiz.addEventListener("click", function (){
     triggerQuestion();
 })
 
-
+// TRIGGER QUESTION FUNCTION - Displays the question and listens for an onclick
 function triggerQuestion() {
     theAsk.textContent = questionsArray[next].question;
-
     answer1Btn.textContent = questionsArray[next].options[0];
     answer1Btn.addEventListener("click", questionIterate);
     answer2Btn.textContent = questionsArray[next].options[1];
@@ -115,10 +94,9 @@ function triggerQuestion() {
     answer4Btn.addEventListener("click", questionIterate);
 } 
 
+// QUESTION ITERATE FUNCTION - Iterates through the question index and listens for an event.
 function questionIterate (event) {
-    // document.getElementById("score-div").style.visibility='visible';
-    event.preventDefault() // prevents any default button behavior
-
+    event.preventDefault() 
     var answer = event.target.textContent
     checkAnswer(answer);
     console.log(answer);
@@ -126,54 +104,20 @@ function questionIterate (event) {
     triggerQuestion(); 
 }
 
+// CHECK ANSWER FUNCTION - Listens for the answer event and compares it to the correct answer
+// if it's correct score increase by 1 if it's wrong time decrements by 10
 function checkAnswer (answer) {
     if (answer === questionsArray[next].correct) {
         scoreCount.textContent = "Score: " + score++
     } else { secondsLeft -= 10; 
     } }
 
-
+// ENDSCREEN FUNCTION - Hide questions and timer while displaying endscreen and score div
     function endScreen () {
     document.getElementById("questionDisplay").style.visibility='hidden';
     document.getElementById("endScreen").style.visibility='visible';
     document.getElementById("score-div").style.visibility='visible';
-
-    var endImage = document.createElement("img")
-    endImage.setAttribute("src", )
+    document.getElementById("timer-div").style.visibility='hidden';
 
     }
-    // get current questions correct answer and compare it to the answer that's passed in. If they are the same
-//     // increase the score by one
-//     // if they're not the same decrease the time by -10
-// }
-
-// function userSelection (){
-//     score = score + 1
-// }
-
-// function userSelection (){
-//     scoreCount.textContent = "Score: " + score
-//     var answers = questionsArray[""].correct
-//     if (answers == questionsArray[""].options[correct]) {
-//         score++
-//     }
-// }
-
-
-// Create score variables
-// var score = 0; (start at 0)
-// for loop to increase score by 1 (++) if correct 
-
-
-
-
-// Global Variables
-// var start time
-// var time left
-
-// Declare Functions 
-
-// function runTime () {}
-// function askQuestions () {}
-
 
