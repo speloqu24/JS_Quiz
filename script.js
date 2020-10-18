@@ -13,6 +13,8 @@ var answer1Btn = document.querySelector("#answer1");
 var answer2Btn = document.querySelector("#answer2");
 var answer3Btn = document.querySelector("#answer3");
 var answer4Btn = document.querySelector("#answer4");
+var userInput = document.querySelector("#first-name");
+var userNameDisplay = document.querySelector("#first-name-display");
 
 var secondsLeft = 90;
 var next = 0;
@@ -83,17 +85,21 @@ startQuiz.addEventListener("click", function (event){
     triggerQuestion();
 })
 
-// var user = userInput.value.trim()
-//     localStorage.setItem("user", JSON.stringify(user);)
-//     console.log(user)
-
-// // LISTENING for the onclick to store user name in memory
+// // LISTENING for the onclick to store user name in memory and in local storage
 startQuiz.addEventListener("click", function (event){
     event.preventDefault();
-    var user = userInput.value.trim()
-    userNameDisplay.textContent= "Name: " + user;
-    // localStorage.setItem("user", JSON.stringify(user);)
+    var user = { name: userInput.value.trim() };
+    localStorage.setItem("user", JSON.stringify(user));
+    
+    var prevUser = JSON.parse(localStorage.getItem("user"));
+    userNameDisplay.textContent = prevUser.name;
+    
     console.log(user)
+
+    if (user.name === "") {
+         alert ("Name field CANNOT be blank");
+         window.location.reload();ß
+    }
 })
 
 // TRIGGER QUESTION FUNCTION - Displays the question and listens for an onclick
@@ -119,6 +125,7 @@ function questionIterate (event) {
     triggerQuestion(); 
 }
 
+
 // CHECK ANSWER FUNCTION - Listens for the answer event and compares it to the correct answer
 // if it's correct score increase by 1 if it's wrong time decrements by 10
 function checkAnswer (answer) {
@@ -138,6 +145,4 @@ function checkAnswer (answer) {
 
 
 
-var userInput = document.querySelector("#first-name");
-var userNameDisplay = document.querySelector("#first-name-display");
 // userNameDisplay.textContent = "Name: " + userInput;
