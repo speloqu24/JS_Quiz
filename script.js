@@ -140,7 +140,6 @@ function checkAnswer (answer) {
     document.getElementById("endScreen").style.visibility='visible';
     document.getElementById("score-div").style.visibility='visible';
     document.getElementById("timer-div").style.visibility='hidden';
-
     }
 
 
