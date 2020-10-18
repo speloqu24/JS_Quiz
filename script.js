@@ -4,7 +4,7 @@
 // VARIABLE DECLARATION : Storing variables in global memory
 var mainDiv = document.getElementById("main-div");
 var startQuiz = document.getElementById("startQuiz");
-var endScreenDiv = document.getElementById("endScreen")
+var endScreenDiv = document.getElementById("endScreen");
 var timerDiv = document.getElementById("timer-div");
 var theAsk = document.querySelector("#theAsk");
 var scoreCount = document.getElementById("score-div");
@@ -15,133 +15,162 @@ var answer3Btn = document.querySelector("#answer3");
 var answer4Btn = document.querySelector("#answer4");
 var userInput = document.querySelector("#first-name");
 var userNameDisplay = document.querySelector("#first-name-display");
+// var scoreBoard =
 
 var secondsLeft = 90;
 var next = 0;
 var score = 0;
-var highScore = 0;
+// var highScore = 0;
 
-var questionsArray = [ {
+var questionsArray = [
+  {
     question: "What does DOM stand for?",
-    options: ["Document Object Model", "this answer is wrong", "DoCT", "Dive into modes"],
+    options: [
+      "Document Object Model",
+      "this answer is wrong",
+      "DoCT",
+      "Dive into modes",
+    ],
     correct: "Document Object Model",
-},
-{
+  },
+  {
     question: "What do we use to store global variables?",
     options: ["gl", "var", "gv", "vari"],
     correct: "var",
-},
-{
+  },
+  {
     question: "When does a function run in JS?",
     options: ["{}", "#", "[]", "()"],
     correct: "()",
-},
-{
+  },
+  {
     question: "How is JS added to HTML?",
     options: ["<scripthtml>", "<js>", "<javascript>", "<script>"],
     correct: "<script>",
-},{
+  },
+  {
     question: "What are the three pieces to a for loop?",
-    options: ["counter, change, index", "counter, condition, index", "change, counter, iterator ", "counter, condition, iterator"],
+    options: [
+      "counter, change, index",
+      "counter, condition, index",
+      "change, counter, iterator ",
+      "counter, condition, iterator",
+    ],
     correct: "counter, condition, iterator",
-},{
-    question: "An 'alert' pops up, and text input from the user is requested?. What is that called?",
+  },
+  {
+    question:
+      "An 'alert' pops up, and text input from the user is requested?. What is that called?",
     options: ["prompt", "confirm", "bolean", "variable"],
     correct: "prompt",
-},{
+  },
+  {
     question: "What company developed JavaScript?",
     options: ["Apple", "Microsoft", "Netscape", "IBM"],
     correct: "Netscape",
-},{
+  },
+  {
     question: "How can you convert a string to an integer?",
     options: ["percent", "parseInt", "parse#", "percInt"],
     correct: "parseInt",
-},
-]
+  },
+];
 
 // Hide elements
-document.getElementById("questionDisplay").style.visibility='hidden';
-document.getElementById("score-div").style.visibility='hidden';
-document.getElementById("endScreen").style.visibility='hidden';
-scoreCount.textContent = "Score: " + score++
+document.getElementById("questionDisplay").style.visibility = "hidden";
+document.getElementById("score-div").style.visibility = "hidden";
+document.getElementById("endScreen").style.visibility = "hidden";
+scoreCount.textContent = "Score: " + score++;
 
 // START QUIZ WITH TIMER FUNCTION
 function timerDisplay() {
-    var timeInterval = setInterval(function() {
-        timerDiv.textContent = "Timer: " + secondsLeft
-        secondsLeft--;
-        if (secondsLeft === 0 || next === questionsArray.length) {
-            clearInterval(timeInterval)
-            endScreen()
-        }
-    }, 500);
+  var timeInterval = setInterval(function () {
+    timerDiv.textContent = "Timer: " + secondsLeft;
+    secondsLeft--;
+    if (secondsLeft === 0 || next === questionsArray.length) {
+      clearInterval(timeInterval);
+      endScreen();
+    }
+  }, 500);
 }
 // LISTENING for the onclick to start the quiz
-startQuiz.addEventListener("click", function (event){
-    event.preventDefault();
-    document.getElementById("main-div").style.visibility='hidden';
-    document.getElementById("questionDisplay").style.visibility='visible';
-    timerDisplay()
-    triggerQuestion();
-})
+startQuiz.addEventListener("click", function (event) {
+  event.preventDefault();
+  document.getElementById("main-div").style.visibility = "hidden";
+  document.getElementById("questionDisplay").style.visibility = "visible";
+  timerDisplay();
+  triggerQuestion();
+});
 
 // // LISTENING for the onclick to store user name in memory and in local storage
-startQuiz.addEventListener("click", function (event){
-    event.preventDefault();
-    var user = { name: userInput.value.trim() };
-    localStorage.setItem("user", JSON.stringify(user));
-    
-    var prevUser = JSON.parse(localStorage.getItem("user"));
-    userNameDisplay.textContent = prevUser.name;
-    
-    console.log(user)
+startQuiz.addEventListener("click", function (event) {
+  event.preventDefault();
+  var user = { name: userInput.value.trim() };
+  localStorage.setItem("user", JSON.stringify(user));
 
-    if (user.name === "") {
-         alert ("Name field CANNOT be blank");
-         window.location.reload();ß
-    }
-})
+  var prevUser = JSON.parse(localStorage.getItem("user"));
+  userNameDisplay.textContent = prevUser.name;
+
+  console.log(user);
+
+  if (user.name === "") {
+    alert("Name field CANNOT be blank");
+    window.location.reload();
+  }
+});
 
 // TRIGGER QUESTION FUNCTION - Displays the question and listens for an onclick
 function triggerQuestion() {
-    theAsk.textContent = questionsArray[next].question;
-    answer1Btn.textContent = questionsArray[next].options[0];
-    answer1Btn.addEventListener("click", questionIterate);
-    answer2Btn.textContent = questionsArray[next].options[1];
-    answer2Btn.addEventListener("click", questionIterate);
-    answer3Btn.textContent = questionsArray[next].options[2];
-    answer3Btn.addEventListener("click", questionIterate);
-    answer4Btn.textContent = questionsArray[next].options[3];
-    answer4Btn.addEventListener("click", questionIterate);
-} 
+  theAsk.textContent = questionsArray[next].question;
 
-// QUESTION ITERATE FUNCTION - Iterates through the question index and listens for an event.
-function questionIterate (event) {
-    event.preventDefault() 
-    var answer = event.target.textContent
-    checkAnswer(answer);
-    console.log(answer);
-    next++
-    triggerQuestion(); 
+  answer1Btn.textContent = questionsArray[next].options[0];
+  answer1Btn.addEventListener("click", questionIterate);
+  answer2Btn.textContent = questionsArray[next].options[1];
+  answer2Btn.addEventListener("click", questionIterate);
+  answer3Btn.textContent = questionsArray[next].options[2];
+  answer3Btn.addEventListener("click", questionIterate);
+  answer4Btn.textContent = questionsArray[next].options[3];
+  answer4Btn.addEventListener("click", questionIterate);
 }
 
+// QUESTION ITERATE FUNCTION - Iterates through the question index and listens for an event.
+function questionIterate(event) {
+  event.preventDefault();
+  var answer = event.target.textContent;
+  checkAnswer(answer);
+  console.log(answer);
+  next++;
+  triggerQuestion();
+}
 
 // CHECK ANSWER FUNCTION - Listens for the answer event and compares it to the correct answer
 // if it's correct score increase by 1 if it's wrong time decrements by 10
-function checkAnswer (answer) {
-    if (answer === questionsArray[next].correct) {
-        scoreCount.textContent = "Score: " + score++
-    } else { secondsLeft -= 10; 
-    } }
+function checkAnswer(answer) {
+  if (answer === questionsArray[next].correct) {
+    scoreCount.textContent = "Score: " + score++;
+  } else {
+    secondsLeft -= 10;
+  }
+}
+
 
 // ENDSCREEN FUNCTION - Hide questions and timer while displaying endscreen and score div
-    function endScreen () {
-    document.getElementById("questionDisplay").style.visibility='hidden';
-    document.getElementById("endScreen").style.visibility='visible';
-    document.getElementById("score-div").style.visibility='visible';
-    document.getElementById("timer-div").style.visibility='hidden';
+function endScreen() {
+    document.getElementById("questionDisplay").style.visibility = "hidden";
+    document.getElementById("endScreen").style.visibility = "visible";
+    document.getElementById("score-div").style.visibility = "visible";
+    document.getElementById("timer-div").style.visibility = "hidden";
+    document.getElementById("name-display").textContent = JSON.parse(
+        localStorage.getItem("user")).name;
     }
+    
+    
+function storeScore(event) {
+event.preventDefault()
+var userScore = { score: scoreCount.value.trim() };
+localStorage.setItem("userScore", JSON.stringify(userScore));
 
+var theScore = JSON.parse(localStorage.getItem("userScore"));
+scoreCount.textContent = theScore.score;
 
-
-// userNameDisplay.textContent = "Name: " + userInput;
+console.log(score);}
