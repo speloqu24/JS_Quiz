@@ -112,12 +112,27 @@ startQuiz.addEventListener("click", function (event) {
   userNameDisplay.textContent = prevUser.name;
 
   console.log(user);
+  
+  localStorage.setItem ("score", (score));
+  
+  var prevScore = JSON.parse(localStorage.getItem("score"));
+  scoreCount.textContent = prevScore.score;
 
   if (user.name === "") {
     alert("Name field CANNOT be blank");
     window.location.reload();
   }
 });
+
+// function storeScore (event) {
+// //   var userScore = { score: scoreCount.value.trim() };
+// //   localStorage.setItem("userScore", (userScore));
+  
+// //     var theScore = localStorage.getItem("userScore");
+// //     scoreCount.textContent = theScore.score;
+
+// //   console.log(theScore)
+// }
 
 // TRIGGER QUESTION FUNCTION - Displays the question and listens for an onclick
 function triggerQuestion() {
@@ -140,6 +155,10 @@ function questionIterate(event) {
   checkAnswer(answer);
   console.log(answer);
   next++;
+  if (next >= questionsArray.length) {
+    endScreen();
+    return;
+  }
   triggerQuestion();
 }
 
@@ -153,24 +172,13 @@ function checkAnswer(answer) {
   }
 }
 
-
 // ENDSCREEN FUNCTION - Hide questions and timer while displaying endscreen and score div
 function endScreen() {
-    document.getElementById("questionDisplay").style.visibility = "hidden";
-    document.getElementById("endScreen").style.visibility = "visible";
-    document.getElementById("score-div").style.visibility = "visible";
-    document.getElementById("timer-div").style.visibility = "hidden";
-    document.getElementById("name-display").textContent = JSON.parse(
-        localStorage.getItem("user")).name;
-    }
-    
-    
-function storeScore(event) {
-event.preventDefault()
-var userScore = { score: scoreCount.value.trim() };
-localStorage.setItem("userScore", JSON.stringify(userScore));
-
-var theScore = JSON.parse(localStorage.getItem("userScore"));
-scoreCount.textContent = theScore.score;
-
-console.log(score);}
+  document.getElementById("questionDisplay").style.visibility = "hidden";
+  document.getElementById("endScreen").style.visibility = "visible";
+  document.getElementById("score-div").style.visibility = "visible";
+  document.getElementById("timer-div").style.visibility = "hidden";
+  document.getElementById("name-display").textContent = JSON.parse(
+    localStorage.getItem("user")
+  ).name;
+}
