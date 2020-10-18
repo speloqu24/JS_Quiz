@@ -74,12 +74,26 @@ function timerDisplay() {
         }
     }, 500);
 }
-
-startQuiz.addEventListener("click", function (){
+// LISTENING for the onclick to start the quiz
+startQuiz.addEventListener("click", function (event){
+    event.preventDefault();
     document.getElementById("main-div").style.visibility='hidden';
     document.getElementById("questionDisplay").style.visibility='visible';
     timerDisplay()
     triggerQuestion();
+})
+
+// var user = userInput.value.trim()
+//     localStorage.setItem("user", JSON.stringify(user);)
+//     console.log(user)
+
+// // LISTENING for the onclick to store user name in memory
+startQuiz.addEventListener("click", function (event){
+    event.preventDefault();
+    var user = userInput.value.trim()
+    userNameDisplay.textContent= "Name: " + user;
+    // localStorage.setItem("user", JSON.stringify(user);)
+    console.log(user)
 })
 
 // TRIGGER QUESTION FUNCTION - Displays the question and listens for an onclick
@@ -122,3 +136,8 @@ function checkAnswer (answer) {
 
     }
 
+
+
+var userInput = document.querySelector("#first-name");
+var userNameDisplay = document.querySelector("#first-name-display");
+// userNameDisplay.textContent = "Name: " + userInput;

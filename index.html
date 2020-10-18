@@ -21,10 +21,18 @@
         <p>This quiz is going to test your fundamental understanding of JavaScript. You have 90 seconds to answer 8
         questions correctly. If a question is answered incorrectly 10 seconds will be removed from the timer, limiting your time
         even more. When the timer reaches 0 your score will be displayed. May the odds be in your favor!!</p>
+        <h2>See how you rank against everyone else!</h2>
+        <div class="input-group">
+               <label for="first-name">Name</label>
+               <input type="text" name="first-name" id="first-name" placeholder="Mike" />
+        </div>
+        <br>
         <button id="startQuiz">Click to Start!</button>
     </div>
+    <form method="POST">
     <!-- Question Display div -->
 <div id="questionDisplay">
+    <span id="first-name-display"></span>
     <h1 id= "theAsk"></h1>
     <button class= "questions" id= "answer1"></button>
     <button class= "questions" id= "answer2"></button>
@@ -39,6 +47,12 @@
     <span id= "high-score"></span>
     <!-- <button id= "startQuiz">Try Again</button> -->
 </div>
+
+    </form>
+
+
+
+
 
     <script src="./script.js" type="text/javascript"></script>
 </body>
