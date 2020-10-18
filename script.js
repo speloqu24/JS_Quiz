@@ -80,7 +80,7 @@ var questionsArray = [
 document.getElementById("questionDisplay").style.visibility = "hidden";
 document.getElementById("score-div").style.visibility = "hidden";
 document.getElementById("endScreen").style.visibility = "hidden";
-// scoreCount.textContent = "Score: " + score++;
+// scoreCount.textContent = "Score: " + score;
 
 // START QUIZ WITH TIMER FUNCTION
 function timerDisplay() {
@@ -103,9 +103,10 @@ startQuiz.addEventListener("click", function (event) {
   triggerQuestion();
 });
 
-// // LOCAL STORAGE
+// // LOCAL STORAGE for USER NAME
 startQuiz.addEventListener("click", function (event) {
   event.preventDefault();
+
   var user = { name: userInput.value.trim() };
   localStorage.setItem("user", JSON.stringify(user));
 
@@ -113,11 +114,6 @@ startQuiz.addEventListener("click", function (event) {
   userNameDisplay.textContent = prevUser.name;
 
   console.log(user);
-  
-  localStorage.setItem ("score", (score));
-  
-  var prevScore = JSON.parse(localStorage.getItem("score"));
-  scoreCount.textContent = prevScore.score;
 
   if (user.name === "") {
     alert("Name field CANNOT be blank");
@@ -139,17 +135,26 @@ function triggerQuestion() {
   answer4Btn.addEventListener("click", questionIterate);
 }
 
+
 // QUESTION ITERATE FUNCTION - Iterates through the question index and listens for an event.
 function questionIterate(event) {
-  event.preventDefault();
-  var answer = event.target.textContent;
-  checkAnswer(answer);
-  console.log(answer);
-  next++;
-  if (next >= questionsArray.length) {
+    event.preventDefault();
+    
+    var answer = event.target.textContent;
+    checkAnswer(answer);
+    console.log(answer);
+    next++;
+    if (next >= questionsArray.length) {
+        
+        var userScore = { score: scoreCount.value}
+            localStorage.setItem("userScore", score);
+        var prevScore = JSON.parse(localStorage.getItem("userScore"));
+            scoreCount.textContent = prevScore.score;     
+
     endScreen();
     return;
   }
+
   triggerQuestion();
 }
 
@@ -157,18 +162,23 @@ function questionIterate(event) {
 // if it's correct score increase by 1 if it's wrong time decrements by 10
 function checkAnswer(answer) {
   if (answer === questionsArray[next].correct) {
-    scoreCount.textContent = "Score: " + score++;
+    score++;
+    scoreCount.textContent = "Score: " + score;
   } else {
     secondsLeft -= 10;
   }
+  
 }
 
 // ENDSCREEN FUNCTION - Hide questions and timer while displaying endscreen and score div
 function endScreen() {
+
   document.getElementById("questionDisplay").style.visibility = "hidden";
   document.getElementById("endScreen").style.visibility = "visible";
   document.getElementById("score-div").style.visibility = "visible";
   document.getElementById("timer-div").style.visibility = "hidden";
-  document.getElementById("name-display").textContent = JSON.parse(localStorage.getItem("user")).name;
-  document.getElementById("final-score").textContent = JSON.parse(localStorage.getItem("score")).scoreCount;
+  document.getElementById("name-display").textContent = JSON.parse(
+    localStorage.getItem("user")
+  ).name;
+  document.getElementById("final-score").textContent = localStorage.getItem("prevScore").score;
 }
