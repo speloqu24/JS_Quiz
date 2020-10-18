@@ -17,6 +17,7 @@ var answer4Btn = document.querySelector("#answer4");
 var secondsLeft = 90;
 var next = 0;
 var score = 0;
+var highScore = 0;
 
 var questionsArray = [ {
     question: "What does DOM stand for?",
