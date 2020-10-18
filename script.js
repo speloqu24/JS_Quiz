@@ -15,13 +15,9 @@ var answer3Btn = document.querySelector("#answer3");
 var answer4Btn = document.querySelector("#answer4");
 var userInput = document.querySelector("#first-name");
 var userNameDisplay = document.querySelector("#first-name-display");
-// var scoreBoard =
-
 var secondsLeft = 90;
 var next = 0;
 var score = 0;
-// var highScore = 0;
-
 var questionsArray = [
   {
     question: "What does DOM stand for?",
@@ -80,7 +76,6 @@ var questionsArray = [
 document.getElementById("questionDisplay").style.visibility = "hidden";
 document.getElementById("score-div").style.visibility = "hidden";
 document.getElementById("endScreen").style.visibility = "hidden";
-// scoreCount.textContent = "Score: " + score;
 
 // START QUIZ WITH TIMER FUNCTION
 function timerDisplay() {
@@ -103,14 +98,14 @@ startQuiz.addEventListener("click", function (event) {
   triggerQuestion();
 });
 
-// // LOCAL STORAGE for USER NAME
+// // LOCAL STORAGE for USER
 startQuiz.addEventListener("click", function (event) {
   event.preventDefault();
 
-  var user = { name: userInput.value.trim() };
-  localStorage.setItem("user", JSON.stringify(user));
+  var user = userInput.value.trim()
+  localStorage.setItem("user",(user));
 
-  var prevUser = JSON.parse(localStorage.getItem("user"));
+  var prevUser = localStorage.getItem("user");
   userNameDisplay.textContent = prevUser.name;
 
   console.log(user);
@@ -135,21 +130,19 @@ function triggerQuestion() {
   answer4Btn.addEventListener("click", questionIterate);
 }
 
-
-// QUESTION ITERATE FUNCTION - Iterates through the question index and listens for an event.
+// QUESTION ITERATE FUNCTION & Local storage for SCORE- Iterates through the question index and listens for an event.
 function questionIterate(event) {
-    event.preventDefault();
-    
-    var answer = event.target.textContent;
-    checkAnswer(answer);
-    console.log(answer);
-    next++;
-    if (next >= questionsArray.length) {
-        
-        var userScore = { score: scoreCount.value}
-            localStorage.setItem("userScore", score);
-        var prevScore = JSON.parse(localStorage.getItem("userScore"));
-            scoreCount.textContent = prevScore.score;     
+  event.preventDefault();
+
+  var answer = event.target.textContent;
+  checkAnswer(answer);
+  console.log(answer);
+  next++;
+  if (next >= questionsArray.length) {
+
+  localStorage.setItem("userScore", score);
+  var prevScore = localStorage.getItem("userScore");
+  scoreCount.textContent = prevScore     
 
     endScreen();
     return;
@@ -175,10 +168,8 @@ function endScreen() {
 
   document.getElementById("questionDisplay").style.visibility = "hidden";
   document.getElementById("endScreen").style.visibility = "visible";
-  document.getElementById("score-div").style.visibility = "visible";
+  document.getElementById("score-div").style.visibility = "hidden";
   document.getElementById("timer-div").style.visibility = "hidden";
-  document.getElementById("name-display").textContent = JSON.parse(
-    localStorage.getItem("user")
-  ).name;
-  document.getElementById("final-score").textContent = localStorage.getItem("prevScore").score;
+  document.getElementById("name-display").textContent = localStorage.getItem("user");
+  document.getElementById("final-score").textContent = localStorage.getItem("userScore");
 }

@@ -16,6 +16,23 @@ p {
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
 }
+h3 {
+  top: 0;
+  font-size: 50px;
+  color: coral;
+}
+
+img {
+  background-color: darkcyan;
+  padding: 50px;
+  border-radius: 5%;
+  margin-top: -250px;
+}
+
+.input-group {
+  color: black;
+  font-size: large;
+}
 
 #questionDisplay {
   margin-top: -200px;
@@ -49,7 +66,7 @@ p {
 }
 
 .questions:hover {
-  background-color: rgb(154, 154, 154);
+  background-color: darkcyan;
 }
 
 #main-div {
@@ -61,16 +78,4 @@ p {
   text-align: center;
   margin-bottom: -100px;
   font-size: 100px;
-}
-
-h3 {
-  font-size: 50px;
-  color: coral;
-}
-
-img {
-  background-color: darkcyan;
-  padding: 50px;
-  border-radius: 5%;
-  margin-top: -100px;
 }
