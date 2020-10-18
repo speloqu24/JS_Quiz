@@ -80,7 +80,7 @@ var questionsArray = [
 document.getElementById("questionDisplay").style.visibility = "hidden";
 document.getElementById("score-div").style.visibility = "hidden";
 document.getElementById("endScreen").style.visibility = "hidden";
-scoreCount.textContent = "Score: " + score++;
+// scoreCount.textContent = "Score: " + score++;
 
 // START QUIZ WITH TIMER FUNCTION
 function timerDisplay() {
@@ -93,6 +93,7 @@ function timerDisplay() {
     }
   }, 500);
 }
+
 // LISTENING for the onclick to start the quiz
 startQuiz.addEventListener("click", function (event) {
   event.preventDefault();
@@ -102,7 +103,7 @@ startQuiz.addEventListener("click", function (event) {
   triggerQuestion();
 });
 
-// // LISTENING for the onclick to store user name in memory and in local storage
+// // LOCAL STORAGE
 startQuiz.addEventListener("click", function (event) {
   event.preventDefault();
   var user = { name: userInput.value.trim() };
@@ -123,16 +124,6 @@ startQuiz.addEventListener("click", function (event) {
     window.location.reload();
   }
 });
-
-// function storeScore (event) {
-// //   var userScore = { score: scoreCount.value.trim() };
-// //   localStorage.setItem("userScore", (userScore));
-  
-// //     var theScore = localStorage.getItem("userScore");
-// //     scoreCount.textContent = theScore.score;
-
-// //   console.log(theScore)
-// }
 
 // TRIGGER QUESTION FUNCTION - Displays the question and listens for an onclick
 function triggerQuestion() {
@@ -162,7 +153,7 @@ function questionIterate(event) {
   triggerQuestion();
 }
 
-// CHECK ANSWER FUNCTION - Listens for the answer event and compares it to the correct answer
+// CHECK ANSWER and SCORE Function - Listens for the answer event and compares it to the correct answer
 // if it's correct score increase by 1 if it's wrong time decrements by 10
 function checkAnswer(answer) {
   if (answer === questionsArray[next].correct) {
@@ -178,7 +169,6 @@ function endScreen() {
   document.getElementById("endScreen").style.visibility = "visible";
   document.getElementById("score-div").style.visibility = "visible";
   document.getElementById("timer-div").style.visibility = "hidden";
-  document.getElementById("name-display").textContent = JSON.parse(
-    localStorage.getItem("user")
-  ).name;
+  document.getElementById("name-display").textContent = JSON.parse(localStorage.getItem("user")).name;
+  document.getElementById("final-score").textContent = JSON.parse(localStorage.getItem("score")).scoreCount;
 }
