@@ -82,11 +82,10 @@ function timerDisplay() {
   var timeInterval = setInterval(function () {
     timerDiv.textContent = "Timer: " + secondsLeft;
     secondsLeft--;
-    if (secondsLeft === 0 || next === questionsArray.length) {
+    if (secondsLeft === 0) {
+        alert ("You're out of time! Try again next time!")
       clearInterval(timeInterval);
-      endScreen();
-    }
-  }, 500);
+  }, 90);
 }
 
 // LISTENING for the onclick to start the quiz
