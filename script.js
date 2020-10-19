@@ -82,10 +82,11 @@ function timerDisplay() {
   var timeInterval = setInterval(function () {
     timerDiv.textContent = "Timer: " + secondsLeft;
     secondsLeft--;
-    if (secondsLeft === 0) {
-        alert ("You're out of time! Try again next time!")
+    if (secondsLeft === 0 || next === questionsArray.length) {
       clearInterval(timeInterval);
-  }, 90);
+      endScreen();
+    }
+  }, 500);
 }
 
 // LISTENING for the onclick to start the quiz
@@ -97,14 +98,14 @@ startQuiz.addEventListener("click", function (event) {
   triggerQuestion();
 });
 
-// // LOCAL STORAGE for USER
+// // LOCAL STORAGE
 startQuiz.addEventListener("click", function (event) {
   event.preventDefault();
 
   var user = userInput.value.trim()
   localStorage.setItem("user",(user));
 
-  var prevUser = localStorage.getItem("user");
+  var prevUser = JSON.parse(localStorage.getItem("user"));
   userNameDisplay.textContent = prevUser.name;
 
   console.log(user);
@@ -129,7 +130,7 @@ function triggerQuestion() {
   answer4Btn.addEventListener("click", questionIterate);
 }
 
-// QUESTION ITERATE FUNCTION & Local storage for SCORE- Iterates through the question index and listens for an event.
+// QUESTION ITERATE FUNCTION - Iterates through the question index and listens for an event.
 function questionIterate(event) {
   event.preventDefault();
 
