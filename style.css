@@ -16,6 +16,7 @@ p {
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
 }
+
 h3 {
   top: 0;
   font-size: 50px;
@@ -70,7 +71,7 @@ img {
 }
 
 #main-div {
-  margin-top: 100px;
+  margin-top: 200px;
 }
 
 #score-div {
@@ -78,4 +79,8 @@ img {
   text-align: center;
   margin-bottom: -100px;
   font-size: 100px;
+}
+
+#final-score {
+  color: black;
 }

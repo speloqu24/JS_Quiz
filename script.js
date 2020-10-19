@@ -82,7 +82,7 @@ function timerDisplay() {
   var timeInterval = setInterval(function () {
     timerDiv.textContent = "Timer: " + secondsLeft;
     secondsLeft--;
-    if (secondsLeft === 0) {
+    if (secondsLeft === 0 && questionsArray.length === 0) {
         alert ("Timer Ran out!")
         window.location = '/';
       clearInterval(timeInterval);
@@ -105,11 +105,11 @@ startQuiz.addEventListener("click", function (event) {
   var user = userInput.value.trim()
   localStorage.setItem("user",(user));
 
-  var prevUser = JSON.parse(localStorage.getItem("user"));
+  var prevUser = localStorage.getItem("user");
   userNameDisplay.textContent = prevUser.name;
 
   console.log(user);
-
+  
   if (user.name === "") {
     alert("Name field CANNOT be blank");
     window.location.reload();
@@ -173,3 +173,5 @@ function endScreen() {
   document.getElementById("name-display").textContent = localStorage.getItem("user");
   document.getElementById("final-score").textContent = localStorage.getItem("userScore");
 }
+
+
