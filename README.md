@@ -1,6 +1,6 @@
 # Project Objective
 
-Link:
+Link:https://speloqu24.github.io/JS_Quiz/
 
 The main objective of this project was to demonstrate a majority of the skills I've learned this far in the bootcamp. Combining HTML, CSS, and Javascript to create a multiple-choice quiz that runs in the browser, is a responsive user interface and shows my ability to store and retrieve items out of local storage.
 
