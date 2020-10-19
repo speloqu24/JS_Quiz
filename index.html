@@ -1,59 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>JS_Quiz</title>
-<!-- Link to CSS -->
-<link rel="stylesheet" href="./style.css">
+    <!-- Link to CSS -->
+    <link rel="stylesheet" href="./style.css" />
     <!-- Added jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- Timer Div -->
     <div id="timer-div"></div>
-    <div id= "score-div"></div>
+    <div id="score-div"></div>
 
-<!-- Stores all written content -->
+    <!-- Stores all written content -->
     <div id="main-div">
-        <h1>Welcome to the BootCamp JS Quiz!</h1>
-        <p>This quiz is going to test your fundamental understanding of JavaScript. You have 90 seconds to answer 8
-        questions correctly. If a question is answered incorrectly 10 seconds will be removed from the timer, limiting your time
-        even more. When the timer reaches 0 your score will be displayed. May the odds be in your favor!!</p>
-        <h2>See how you rank against everyone else!</h2>
-        <div class="input-group">
-               <label for="first-name">Name</label>
-               <input type="text" name="first-name" id="first-name" placeholder="Mike" />
-        </div>
-        <br>
-        <button id="startQuiz">Click to Start!</button>
+      <h1>Welcome to the BootCamp JS Quiz!</h1>
+      <p>
+        This quiz is going to test your fundamental understanding of JavaScript.
+        You have 90 seconds to answer 8 questions correctly. If a question is
+        answered incorrectly 10 seconds will be removed from the timer, limiting
+        your time even more. You must finish the quiz before time runs out to receive your score!
+         May the odds be in your favor!!
+      </p>
+      <h2>See how you rank against everyone else!</h2>
+      <div class="input-group">
+        <label for="first-name">Name</label>
+        <input
+          type="text"
+          name="first-name"
+          id="first-name"
+          placeholder="Mike"
+        />
+      </div>
+      <br />
+      <button id="startQuiz">Click to Start!</button>
     </div>
     <form method="POST">
-    <!-- Question Display div -->
-    <div id="questionDisplay">
-    <span id="first-name-display"></span>
-    <h1 id= "theAsk"></h1>
-    <button class= "questions" id= "answer1"></button>
-    <button class= "questions" id= "answer2"></button>
-    <button class= "questions" id= "answer3"></button>
-    <button class= "questions" id= "answer4"></button>
-</div>
+      <!-- Question Display div -->
+      <div id="questionDisplay">
+        <span id="first-name-display"></span>
+        <h1 id="theAsk"></h1>
+        <button class="questions" id="answer1"></button>
+        <button class="questions" id="answer2"></button>
+        <button class="questions" id="answer3"></button>
+        <button class="questions" id="answer4"></button>
+      </div>
 
-<div id = "endScreen">
-    <img src="Assets/CodingClass.jpg" alt = "Coding Quiz!">
-    <!-- <h3> You made it, how was it?!</h3> -->
-    <!-- <h2 id= "scoreBoard"></h2> -->
-    <h3><span id="name-display"></span>, you made it , how was it?!</h3>
-<h2 style= "color: black;">Your High Score: <span id="final-score"></span></h2>
-    <!-- <span id= "high-score"></span> -->
-    <!-- <button id= "startQuiz">Try Again</button> -->
-</div>
-
+      <div id="endScreen">
+        <img src="Assets/CodingClass.jpg" alt="Coding Quiz!" />
+        <!-- <h3> You made it, how was it?!</h3> -->
+        <!-- <h2 id= "scoreBoard"></h2> -->
+        <h3><span id="name-display"></span>, you made it , how was it?!</h3>
+        <h2 style="color: black">
+          Your High Score: <span id="final-score"></span>
+        </h2>
+        <!-- <span id= "high-score"></span> -->
+        <!-- <button id= "startQuiz">Try Again</button> -->
+      </div>
     </form>
 
     <script src="./script.js" type="text/javascript"></script>
-</body>
-
+  </body>
 </html>
- 
