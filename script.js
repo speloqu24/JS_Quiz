@@ -108,7 +108,7 @@ startQuiz.addEventListener("click", function (event) {
   console.log(user);
 
   if (user === "") {
-      alert ("cannot have no name");
+      alert ("Please enter your name to continue!");
       window.location.reload()
   }
 });
