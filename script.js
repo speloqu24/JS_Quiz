@@ -82,13 +82,13 @@ function timerDisplay() {
   var timeInterval = setInterval(function () {
     timerDiv.textContent = "Timer: " + secondsLeft;
     secondsLeft--;
-    if (secondsLeft === 0 || next === questionsArray.length) {
+    if (secondsLeft === 0) {
+        alert ("Timer Ran out!")
+        window.location = '/';
       clearInterval(timeInterval);
-      endScreen();
     }
-  }, 500);
+  }, 1000);
 }
-
 // LISTENING for the onclick to start the quiz
 startQuiz.addEventListener("click", function (event) {
   event.preventDefault();
